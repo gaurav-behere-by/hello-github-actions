@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      customer:
+        description: 'Customer name'
+        required: true
+        default: 'Intel'
+
+# Default values, common to all customers
+env:
+  VM_SIZE: 128
+  MEM: 2GB
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Run a one-line script
+        run: |
+          if  ${{ github.event.inputs.name == 'Pepsi' }}
+          env:
+            VM_SIZE: 128
+            MEM: 2GB
+          if  ${{ github.event.inputs.name == 'Intel' }}
+          env:
+            VM_SIZE: 128
+            MEM: 2GB
+        
+      - name: Echo the env variables
+        run: |
+          echo ${env.VM_SIZE}
