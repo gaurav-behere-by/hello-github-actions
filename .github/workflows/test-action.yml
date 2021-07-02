@@ -12,6 +12,7 @@ on:
         required: true
         default: 'Intel'
 
+# Default values, common to all customers
 env:
   VM_SIZE: 128
   MEM: 2GB
